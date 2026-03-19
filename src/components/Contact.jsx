@@ -134,12 +134,13 @@ function Contact({ onSubmit }) {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} method="POST" className="space-y-6" data-netlify="true" name="contact">
                 {submitStatus === 'error' && (
                   <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4">
                     Something went wrong. Please try again.
                   </div>
                 )}
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
