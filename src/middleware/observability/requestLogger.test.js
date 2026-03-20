@@ -18,4 +18,14 @@ describe('requestLogger', () => {
     finishCallback();
     // No assertion needed, just ensure no error
   });
+
+  test('should handle missing ip and originalUrl', () => {
+    const req = { method: 'GET', url: '/fallback' };
+    const res = { on: jest.fn(), statusCode: 404 };
+    const next = jest.fn();
+    requestLogger(req, res, next);
+    expect(next).toHaveBeenCalled();
+    const finishCallback = res.on.mock.calls[0][1];
+    finishCallback();
+  });
 });

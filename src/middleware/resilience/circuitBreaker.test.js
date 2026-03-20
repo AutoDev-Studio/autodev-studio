@@ -11,6 +11,12 @@ describe('CircuitBreaker', () => {
     jest.spyOn(mockLogger, 'warn').mockImplementation(() => {});
   });
 
+  test('should use default options when none provided', () => {
+    const defaultBreaker = new CircuitBreaker();
+    expect(defaultBreaker.failureThreshold).toBe(5);
+    expect(defaultBreaker.resetTimeout).toBe(30000);
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
   });

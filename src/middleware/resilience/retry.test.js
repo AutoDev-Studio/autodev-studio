@@ -9,6 +9,13 @@ describe('retry', () => {
     jest.spyOn(mockLogger, 'error').mockImplementation(() => {});
   });
 
+  test('should use default options when none provided', async () => {
+    const fn = jest.fn().mockResolvedValue('ok');
+    const result = await retry(fn);
+    expect(result).toBe('ok');
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
   });
