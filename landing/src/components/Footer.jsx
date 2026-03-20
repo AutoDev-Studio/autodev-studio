@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 
-function Footer({ copyright, links }) {
+function Footer({
+  copyright = '© 2026 AutoDev Studio. All rights reserved.',
+  links = [
+    { label: 'GitHub', href: 'https://github.com/AutoDev-Studio' },
+    { label: 'Twitter', href: 'https://twitter.com/autodevstudio' },
+    { label: 'Contact', href: 'mailto:hello@autodev.live' },
+  ],
+}) {
   return (
     <footer className="bg-gray-900 text-white py-8">
       <div className="container mx-auto px-4">

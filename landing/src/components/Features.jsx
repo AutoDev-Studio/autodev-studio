@@ -14,7 +14,34 @@ FeatureCard.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
-function Features({ features }) {
+function Features({
+  features = [
+    {
+      title: 'UI Design',
+      description: 'Create beautiful, responsive interfaces with React and Tailwind CSS.',
+    },
+    {
+      title: 'Full-Stack Development',
+      description: 'Build complete applications with frontend, backend, and database.',
+    },
+    {
+      title: 'Deployment',
+      description: 'Deploy to Netlify, Vercel, or any cloud platform automatically.',
+    },
+    {
+      title: 'Testing',
+      description: 'Automated testing with Jest and React Testing Library.',
+    },
+    {
+      title: 'Performance',
+      description: 'Optimize for speed, accessibility, and SEO.',
+    },
+    {
+      title: 'Maintenance',
+      description: 'Continuous updates and bug fixes without human intervention.',
+    },
+  ],
+}) {
   return (
     <section className="py-12 md:py-20">
       <div className="container mx-auto px-4">
