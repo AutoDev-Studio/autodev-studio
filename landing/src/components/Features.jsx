@@ -1,76 +1,77 @@
-import PropTypes from 'prop-types';
+const features = [
+  {
+    icon: '🤖',
+    title: 'Fully Autonomous Agents',
+    desc: 'Specialist AI agents handle frontend, backend, QA, and deployment. No micromanaging. They coordinate themselves.'
+  },
+  {
+    icon: '⚡',
+    title: 'Ship in Hours, Not Weeks',
+    desc: 'From requirement to deployed product in hours. Agents work in parallel, 24 hours a day, 7 days a week.'
+  },
+  {
+    icon: '🧪',
+    title: 'Built-In Quality Gates',
+    desc: 'Every feature is tested before it ships. Automated QA agents review code, run tests, and block bad deploys.'
+  },
+  {
+    icon: '🔄',
+    title: 'Continuous Improvement',
+    desc: 'Agents learn from every run. They self-improve, write better code over time, and remember what works.'
+  },
+  {
+    icon: '🔒',
+    title: 'Secure by Default',
+    desc: 'Security scanning on every PR. No secrets in code, no vulnerabilities shipped, zero trust architecture.'
+  },
+  {
+    icon: '📊',
+    title: 'Full Transparency',
+    desc: 'Live dashboard shows every agent, every task, every decision in real time. You see exactly what is happening.'
+  },
+];
 
-function FeatureCard({ title, description }) {
+function Features() {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
-  );
-}
+    <section id="features" style={{padding:'80px 24px'}}>
+      <div style={{maxWidth:'1100px', margin:'0 auto'}}>
+        <div style={{textAlign:'center', marginBottom:'56px'}}>
+          <h2 style={{
+            fontSize: 'clamp(28px, 4vw, 42px)',
+            fontWeight: '800', letterSpacing:'-1px',
+            marginBottom:'16px',
+            background:'linear-gradient(135deg, #f1f5f9, #a5b4fc)',
+            WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text'
+          }}>
+            Everything a dev team does.<br/>Without the dev team.
+          </h2>
+          <p style={{color:'#64748b', fontSize:'17px', maxWidth:'520px', margin:'0 auto', lineHeight:'1.6'}}>
+            Our AI agents cover the full software lifecycle end to end.
+          </p>
+        </div>
 
-FeatureCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
-
-function Features({ features }) {
-  return (
-    <section className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12">
-          What We Build
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              title={feature.title}
-              description={feature.description}
-            />
+        <div style={{
+          display:'grid',
+          gridTemplateColumns:'repeat(auto-fit, minmax(300px, 1fr))',
+          gap:'20px'
+        }}>
+          {features.map(({icon, title, desc}) => (
+            <div key={title} style={{
+              background:'rgba(255,255,255,0.03)',
+              border:'1px solid rgba(255,255,255,0.07)',
+              borderRadius:'16px',
+              padding:'28px',
+              transition:'border-color 0.2s',
+            }}>
+              <div style={{fontSize:'28px', marginBottom:'16px'}}>{icon}</div>
+              <h3 style={{fontSize:'17px', fontWeight:'700', marginBottom:'10px', color:'#f1f5f9'}}>{title}</h3>
+              <p style={{fontSize:'14px', color:'#64748b', lineHeight:'1.6', margin:0}}>{desc}</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
-Features.propTypes = {
-  features: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
-Features.defaultProps = {
-  features: [
-    {
-      title: 'UI Design',
-      description: 'Create beautiful, responsive interfaces with React and Tailwind CSS.',
-    },
-    {
-      title: 'Full-Stack Development',
-      description: 'Build complete applications with frontend, backend, and database.',
-    },
-    {
-      title: 'Deployment',
-      description: 'Deploy to Netlify, Vercel, or any cloud platform automatically.',
-    },
-    {
-      title: 'Testing',
-      description: 'Automated testing with Jest and React Testing Library.',
-    },
-    {
-      title: 'Performance',
-      description: 'Optimize for speed, accessibility, and SEO.',
-    },
-    {
-      title: 'Maintenance',
-      description: 'Continuous updates and bug fixes without human intervention.',
-    },
-  ],
-};
 
 export default Features;

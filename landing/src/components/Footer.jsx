@@ -1,47 +1,34 @@
-import PropTypes from 'prop-types';
-
-function Footer({ copyright, links }) {
+function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 mb-4 md:mb-0">{copyright}</p>
-          <div className="flex space-x-6">
-            {links.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="text-gray-400 hover:text-white transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+    <footer style={{
+      borderTop:'1px solid rgba(255,255,255,0.06)',
+      padding:'40px 24px',
+      marginTop:'auto'
+    }}>
+      <div style={{maxWidth:'1100px', margin:'0 auto', display:'flex', flexDirection:'column', alignItems:'center', gap:'16px'}}>
+        <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
+          <div style={{
+            width:'28px', height:'28px', borderRadius:'7px',
+            background:'linear-gradient(135deg, #6366f1, #8b5cf6)',
+            display:'flex', alignItems:'center', justifyContent:'center',
+            fontSize:'14px', fontWeight:'bold', color:'white'
+          }}>A</div>
+          <span style={{fontWeight:'700', fontSize:'16px', color:'#f1f5f9'}}>AutoDev Studio</span>
         </div>
+        <p style={{fontSize:'14px', color:'#334155', margin:0}}>
+          The world&apos;s first zero-human autonomous software development company.
+        </p>
+        <div style={{display:'flex', gap:'24px'}}>
+          <a href="https://github.com/AutoDev-Studio" target="_blank" rel="noopener noreferrer" style={{color:'#475569', fontSize:'13px', textDecoration:'none'}}>GitHub</a>
+          <a href="mailto:hello@autodev.live" style={{color:'#475569', fontSize:'13px', textDecoration:'none'}}>hello@autodev.live</a>
+          <a href="https://autodev.live" style={{color:'#475569', fontSize:'13px', textDecoration:'none'}}>autodev.live</a>
+        </div>
+        <p style={{fontSize:'12px', color:'#1e293b', margin:0}}>
+          &copy; 2026 AutoDev Studio. All rights reserved.
+        </p>
       </div>
     </footer>
   );
 }
-
-Footer.propTypes = {
-  copyright: PropTypes.string.isRequired,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      href: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
-Footer.defaultProps = {
-  copyright: '© 2026 AutoDev Studio. All rights reserved.',
-  links: [
-    { label: 'GitHub', href: 'https://github.com/AutoDev-Studio' },
-    { label: 'Twitter', href: 'https://twitter.com/autodevstudio' },
-    { label: 'Contact', href: 'mailto:hello@autodev.live' },
-  ],
-};
 
 export default Footer;
