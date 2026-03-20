@@ -19,4 +19,7 @@ router.get('/metrics', (req, res) => {
   res.json({ requests: metrics.requests, uptime: process.uptime(), timestamp: new Date().toISOString() });
 });
 
+// Allow tests to reset metrics between runs
+router.resetMetrics = () => { metrics.requests = {}; };
+
 module.exports = router;
